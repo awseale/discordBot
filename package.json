@@ -1,0 +1,19 @@
+{
+  "name": "discordBot",
+  "version": "1.0.0",
+  "description": "A discord bot that links to the NYT mini crossword puzzle every day",
+  "main": "NYTCrosswordPuzzleBot.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Andrew Seale",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-cron": "^2.0.3",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "node-cron": "^3.0.0",
+    "typescript": "^4.2.3"
+  }
+}
