@@ -32,7 +32,7 @@ client.on('ready', async () => {
 			channelName.client.user?.send('https://www.nytimes.com/crosswords/game/mini');
 		}
 	});
-
+	console.log("This is a test");
 });
 
 client.login(process.env.TOKEN || "");
