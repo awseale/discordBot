@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-digital-ocean-droplet:
+    runs-on: ubuntu-latest
+    name: Deploy Service
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@main
+      - name: Pull from GitHub
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
+          script: cd ~/apps/nyt-crossword-discord-bot && git pull git@github.com:awseale/discordBot.git
+      - name: Restart App
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          key: ${{ secrets.SSH_KEY }}
+          script: cd ~/apps/nyt-crossword-discord-bot && npm install && pm2 start npm --name "NYT Crossword Bot" -- start
