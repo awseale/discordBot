@@ -6,11 +6,12 @@ dotenv.config();
 
 const client = new Client();
 
-client.on('ready', async () => {
+client.on('ready', async client => {
 
 	console.log("This boy done logged in");
+	const channelId = "" + process.env.CHANNEL;
 
-	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
+	const channelName = await client.channels.cache.get(channelID || "");
 	if(!channelName) {
 		console.log("no channel name found");	
 	}
