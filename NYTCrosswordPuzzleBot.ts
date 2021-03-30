@@ -8,10 +8,14 @@ const client = new Client();
 
 client.on('ready', async () => {
 
+	
+
 	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
 	if(!channelName) {
 		console.log("no channel name found");	
 	}
+
+	(channelName as TextChannel)?.send("Ya boy is back and better than ever");
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
 	cron.schedule('* 19 * * Monday,Tuesday,Wednesday,Thursday,Friday', () =>{
