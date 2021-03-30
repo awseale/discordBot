@@ -62,30 +62,29 @@ dotenv.config();
 var client = new discord_js_1.Client();
 client.on('ready', function () { return __awaiter(void 0, void 0, void 0, function () {
     var channelName;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                console.log("This boy done logged in");
-                return [4 /*yield*/, client.channels.fetch(process.env.CHANNEL || "")];
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, client.channels.cache.get(process.env.CHANNEL || "")];
             case 1:
-                channelName = _a.sent();
+                channelName = _b.sent();
                 if (!channelName) {
                     console.log("no channel name found");
                 }
+                (_a = channelName) === null || _a === void 0 ? void 0 : _a.send("\'Sup crossword puzzlers, I\'m gonna be a bot to remind you when a new one drops, and potentially much more ;)");
                 //NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
-                //currently the bot will notify users at noon
-                cron.schedule('* 19 * * Mon,Tue,Wed,Thur,Fri', function () {
+                cron.schedule('* 19 * * Monday,Tuesday,Wednesday,Thursday,Friday', function () {
                     var _a, _b;
                     if (channelName) {
-                        (_a = channelName.client.user) === null || _a === void 0 ? void 0 : _a.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!");
-                        (_b = channelName.client.user) === null || _b === void 0 ? void 0 : _b.send('https://www.nytimes.com/crosswords/game/mini');
+                        (_a = channelName) === null || _a === void 0 ? void 0 : _a.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!");
+                        (_b = channelName) === null || _b === void 0 ? void 0 : _b.send('https://www.nytimes.com/crosswords/game/mini');
                     }
                 });
-                cron.schedule('* 15 * * Sat,Sun', function () {
+                cron.schedule('* 15 * * Saturday,Sunday', function () {
                     var _a, _b;
                     if (channelName) {
-                        (_a = channelName.client.user) === null || _a === void 0 ? void 0 : _a.send('Hey fellas! The NYT mini crossword just updated! Go get \'em!');
-                        (_b = channelName.client.user) === null || _b === void 0 ? void 0 : _b.send('https://www.nytimes.com/crosswords/game/mini');
+                        (_a = channelName) === null || _a === void 0 ? void 0 : _a.send('Hey fellas! The NYT mini crossword just updated! Go get \'em!');
+                        (_b = channelName) === null || _b === void 0 ? void 0 : _b.send('https://www.nytimes.com/crosswords/game/mini');
                     }
                 });
                 return [2 /*return*/];
