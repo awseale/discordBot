@@ -6,9 +6,8 @@ dotenv.config();
 
 const client = new Client();
 
-client.on('ready', async client => {
+client.on('ready', async () => {
 
-	console.log("This boy done logged in");
 	const channelId = "" + process.env.CHANNEL;
 
 	const channelName = await client.channels.cache.get(channelId || "");
