@@ -11,7 +11,7 @@ client.on('ready', async client => {
 	console.log("This boy done logged in");
 	const channelId = "" + process.env.CHANNEL;
 
-	const channelName = await client.channels.cache.get(channelID || "");
+	const channelName = await client.channels.cache.get(channelId || "");
 	if(!channelName) {
 		console.log("no channel name found");	
 	}
