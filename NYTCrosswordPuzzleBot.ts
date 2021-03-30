@@ -7,10 +7,10 @@ dotenv.config();
 const client = new Client();
 
 client.on('ready', async () => {
-	console.log("This boy done logged in");
-	
 
-	const channelName = await client.channels.fetch(process.env.CHANNEL || "");
+	console.log("This boy done logged in");
+
+	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
 	if(!channelName) {
 		console.log("no channel name found");	
 	}
@@ -20,8 +20,8 @@ client.on('ready', async () => {
 		
 	cron.schedule('* 19 * * Monday,Tuesday,Wednesday,Thursday,Friday', () =>{
 		if(channelName){		
-			channelName.client.user?.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!");
-			channelName.client.user?.send('https://www.nytimes.com/crosswords/game/mini');
+			channelName.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!");
+			channelName.send('https://www.nytimes.com/crosswords/game/mini');
 		}
 	});
 
