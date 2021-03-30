@@ -26,6 +26,6 @@ jobs:
           host: ${{ secrets.HOST_IP }}
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
-          passphrase: ${{ secrets.PASSPHRASE }}
           key: ${{ secrets.SSH_KEY }}
-          script: cd ~/apps/nyt-crossword-discord-bot && npm install && pm2 reload "NYT Crossword Bot"
+          script: cd ~/apps/nyt-crossword-discord-bot && npm install && pm2 delete "NYT Crossword Bot"; pm2 start npm --name "NYT Crossword Bot" -- start 
+
