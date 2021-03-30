@@ -15,6 +15,8 @@ client.on('ready', async () => {
 		console.log("no channel name found");	
 	}
 
+	channelName.send("\'Sup crossword puzzlers, I\'m gonna be a bot to remind you when a new one drops, and potentially much more ;)");
+	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
 	//currently the bot will notify users at noon
 		
