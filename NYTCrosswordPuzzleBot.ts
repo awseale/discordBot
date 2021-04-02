@@ -31,7 +31,7 @@ client.on('ready', async () => {
 	});
 });
 
-client.on('message', msg =>{
+client.on('message', async msg =>{
 	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
 
 	if(msg.content === 'GOML' || msg.content === '#GOML'){
