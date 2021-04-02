@@ -8,8 +8,6 @@ const client = new Client();
 
 client.on('ready', async () => {
 
-	
-
 	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
 	if(!channelName) {
 		console.log("no channel name found");	
@@ -31,6 +29,15 @@ client.on('ready', async () => {
 			(channelName as TextChannel)?.send('https://www.nytimes.com/crosswords/game/mini');
 		}
 	});
+});
+
+client.on('message', msg =>{
+	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
+
+	if(msg.content === 'GOML' || msg.content === '#GOML'){
+		(channelName as TextChannel)?.send("GET ON HIS LEVEL");
+	}
+
 });
 
 client.login(process.env.TOKEN || "");
