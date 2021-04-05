@@ -13,7 +13,7 @@ client.on('ready', async () => {
 		console.log("no channel name found");	
 	}
 
-	(channelName as TextChannel)?.send("Ya boy is back and better than ever\nFor change notes, ask @TheWolfeOfWallstreet");
+	(channelName as TextChannel)?.send("Ya boy is back and better than ever\nFor change notes, ask <@354048462150696972>");
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
 	cron.schedule('0 0 2 * * Monday,Tuesday,Wednesday,Thursday,Friday', () =>{
@@ -34,7 +34,7 @@ client.on('ready', async () => {
 client.on('message', async msg =>{
 	const channelName = await client.channels.cache.get(process.env.CHANNEL || "");
 
-	if(msg.content.toLowerCase() === 'goml' || msg.content.toLowerCase() === '#goml'){
+	if(msg.content.toLowerCase().trim() === 'goml' || msg.content.toLowerCase().trim() === '#goml'){
 		(channelName as TextChannel)?.send("GET ON HIS LEVEL");
 	}
 
