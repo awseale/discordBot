@@ -16,17 +16,15 @@ client.on('ready', async () => {
 	(channelName as TextChannel)?.send("Ya boy is back and better than ever\nFor change notes, ask <@354048462150696972>");
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
-	cron.schedule('0 0 2 * * Monday,Tuesday,Wednesday,Thursday,Friday', () =>{
+	cron.schedule('0 0 2 * * Tuesday,Wednesday,Thursday,Friday,Saturday', () =>{
 		if(channelName){		
-			(channelName as TextChannel)?.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!");
-			(channelName as TextChannel)?.send('https://www.nytimes.com/crosswords/game/mini');
+			(channelName as TextChannel)?.send("Hey fellas! The NYT mini crossword just updated! Go get \'em!\nhttps://www.nytimes.com/crosswords/game/mini");
 		}
 	});
 
-	cron.schedule('0 0 22 * * Saturday,Sunday', () =>{
+	cron.schedule('0 0 22 * * Sunday,Monday', () =>{
 		if(channelName){
-			(channelName as TextChannel)?.send('Hey fellas! The NYT mini crossword just updated! Go get \'em!');
-			(channelName as TextChannel)?.send('https://www.nytimes.com/crosswords/game/mini');
+			(channelName as TextChannel)?.send('Hey fellas! The NYT mini crossword just updated! Go get \'em!\nhttps://www.nytimes.com/crosswords/game/mini');
 		}
 	});
 });
