@@ -13,7 +13,7 @@ client.on('ready', async () => {
 		console.log("no channel name found");	
 	}
 
-	(channelName as TextChannel)?.send("Ya boy is back and better than ever\nFor change notes, ask <@354048462150696972>");
+	(channelName as TextChannel)?.send("Ya boy is back and better than ever\nFor change notes, ask <@677740656747216916>");
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
 	cron.schedule('0 0 2 * * Tuesday,Wednesday,Thursday,Friday,Saturday', () =>{
@@ -22,7 +22,7 @@ client.on('ready', async () => {
 		}
 	});
 
-	cron.schedule('0 0 22 * * Sunday,Monday', () =>{
+	cron.schedule('0 0 22 * * Saturday,Sunday', () =>{
 		if(channelName){
 			(channelName as TextChannel)?.send('Hey fellas! The NYT mini crossword just updated! Go get \'em!\nhttps://www.nytimes.com/crosswords/game/mini');
 		}
