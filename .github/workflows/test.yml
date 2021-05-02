@@ -1,3 +1,16 @@
 name: Tests CI
 
 on:
+  pull_request:
+    branches:
+      - main 
+
+jobs:
+  execute-test-suite:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run tests
+      uses: appleboy/ssh-action@master
+      with:
+        script: cd ~/apps/nyt-crossword-discord-bot && npm test
+  
