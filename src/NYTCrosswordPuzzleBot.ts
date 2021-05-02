@@ -1,13 +1,15 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import DiscordClient, { MESSAGES } from "./DiscordClient"
 import Cron, { CRON_INTERVALS } from "./Cron"
 
-dotenv.config();
-
 const discordClient = new DiscordClient();
 
+discordClient.login(process.env.TOKEN || "");
+
+
 discordClient.on('ready', async () => {
-	console.log("poopy boy");
+	console.log("ready");
 	await discordClient.sendMessage(MESSAGES.UPDATE, DiscordClient.CHANNELS.CHANGELOG);
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
@@ -22,12 +24,9 @@ discordClient.on('ready', async () => {
 
 discordClient.on("message", async ({ content }) => {
 	const parsedMessage = discordClient.parseMessage(content);
-
-
+	
 	if(parsedMessage === "goml" || parsedMessage === "#goml"){
 		await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.MAIN);
 	}
 	
 });
-
-discordClient.login(process.env.TOKEN || "");

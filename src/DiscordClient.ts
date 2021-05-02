@@ -12,21 +12,18 @@ class DiscordClient extends Client {
 		MAIN: process.env.CHANNEL || ""
 	}
 
-    client: Client;
 
     constructor() {
-        super()
-        this.client = new Client()
+        super();
     }
 
 	sendMessage = async (message: MESSAGES, channelName: string) => {
-        const hasValidChannels = this.isValidChannel(DiscordClient.CHANNELS.CHANGELOG) && this.isValidChannel(DiscordClient.CHANNELS.MAIN) 
-        const channelNameMatches = channelName === DiscordClient.CHANNELS.CHANGELOG || channelName === DiscordClient.CHANNELS.MAIN
-
+        const hasValidChannels = this.isValidChannel(DiscordClient.CHANNELS.CHANGELOG) && this.isValidChannel(DiscordClient.CHANNELS.MAIN);
+        const channelNameMatches = channelName === DiscordClient.CHANNELS.CHANGELOG || channelName === DiscordClient.CHANNELS.MAIN;
         if (hasValidChannels) {
             if (channelNameMatches) {
-                const channel = await this.client.channels.cache.get(channelName);
-                (channel as TextChannel).send(message)
+                const channel = await this.channels.fetch(channelName);
+                (channel as TextChannel)?.send(message);
             }
         }
 	}
@@ -38,8 +35,8 @@ class DiscordClient extends Client {
     isValidChannel = (channelName: string): boolean => {
         // since they are environment variables, we can only really check that
         // they are not empty
-        return channelName.length > 0
+        return channelName.length > 0;
     }
 }
 
-export default DiscordClient
+export default DiscordClient;
