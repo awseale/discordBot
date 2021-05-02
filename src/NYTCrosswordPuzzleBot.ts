@@ -7,6 +7,7 @@ dotenv.config();
 const discordClient = new DiscordClient();
 
 discordClient.on('ready', async () => {
+	console.log("poopy boy");
 	await discordClient.sendMessage(MESSAGES.UPDATE, DiscordClient.CHANNELS.CHANGELOG);
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
@@ -22,12 +23,11 @@ discordClient.on('ready', async () => {
 discordClient.on("message", async ({ content }) => {
 	const parsedMessage = discordClient.parseMessage(content);
 
-	switch (parsedMessage) {
-		case "goml":
-		case "#goml":
-			await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.MAIN);
-		default:
+
+	if(parsedMessage === "goml" || parsedMessage === "#goml"){
+		await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.MAIN);
 	}
-})
+	
+});
 
 discordClient.login(process.env.TOKEN || "");

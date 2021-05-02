@@ -32,7 +32,7 @@ class DiscordClient extends Client {
 	}
 
     parseMessage = (message: string): string => {
-        return message.toLowerCase().trim()
+        return message.toLowerCase().trim();
     }
 
     isValidChannel = (channelName: string): boolean => {
