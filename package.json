@@ -5,7 +5,9 @@
   "main": "NYTCrosswordPuzzleBot.ts",
   "scripts": {
     "test": "jest",
-    "start": "tsc --p tsconfig.json && node ./build/NYTCrosswordPuzzleBot"
+    "start": "tsc --p tsconfig.json && node ./build/NYTCrosswordPuzzleBot",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "Andrew Seale",
@@ -20,8 +22,14 @@
     "@types/node": "^14.14.35",
     "@types/node-cron": "^2.0.3",
     "@types/sinon": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
     "node-cron": "^3.0.0",
+    "prettier": "2.2.1",
     "sinon": "^10.0.0",
     "ts-jest": "^26.5.5"
   }
