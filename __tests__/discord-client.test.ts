@@ -17,13 +17,8 @@ describe("DiscordClient", () => {
 
   describe("sendMessage()", () => {
     test("successfully calls channel.send when called correctly", async () => {
-      await discordClient.sendMessage(
-        MESSAGES.GOML,
-        DiscordClient.CHANNELS.CHANGELOG
-      );
-      expect(discordClient.channels.cache.get).toHaveBeenCalledWith(
-        DiscordClient.CHANNELS.CHANGELOG
-      );
+      await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.CHANGELOG);
+      expect(discordClient.channels.cache.get).toHaveBeenCalledWith(DiscordClient.CHANNELS.CHANGELOG);
       expect(sendMock).toHaveBeenCalledWith(MESSAGES.GOML);
     });
 

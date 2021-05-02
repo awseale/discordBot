@@ -18,11 +18,9 @@ class DiscordClient extends Client {
 
   sendMessage = async (message: MESSAGES, channelName: string) => {
     const hasValidChannels =
-      this.isValidChannel(DiscordClient.CHANNELS.CHANGELOG) &&
-      this.isValidChannel(DiscordClient.CHANNELS.MAIN);
+      this.isValidChannel(DiscordClient.CHANNELS.CHANGELOG) && this.isValidChannel(DiscordClient.CHANNELS.MAIN);
     const channelNameMatches =
-      channelName === DiscordClient.CHANNELS.CHANGELOG ||
-      channelName === DiscordClient.CHANNELS.MAIN;
+      channelName === DiscordClient.CHANNELS.CHANGELOG || channelName === DiscordClient.CHANNELS.MAIN;
     if (hasValidChannels) {
       if (channelNameMatches) {
         const channel = await this.channels.fetch(channelName);

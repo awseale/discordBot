@@ -7,10 +7,7 @@ export enum CRON_INTERVALS {
 }
 
 class Cron {
-  static startJob(
-    interval: CRON_INTERVALS.WEEKDAY | CRON_INTERVALS.WEEKEND,
-    callback: () => void
-  ) {
+  static startJob(interval: CRON_INTERVALS.WEEKDAY | CRON_INTERVALS.WEEKEND, callback: () => void) {
     cron.schedule(interval, callback, {
       timezone: "America/New_York",
     });
