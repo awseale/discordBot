@@ -10,7 +10,7 @@ describe('DiscordClient', () => {
         jest.resetAllMocks()
         discordClient = new DiscordClient()
         // @ts-ignore
-        discordClient.client.channels.cache.get = jest.fn((channelName) => {
+        discordClient.channels.cache.get = jest.fn((channelName) => {
             return {
                 send: sendMock
             } 
@@ -21,19 +21,19 @@ describe('DiscordClient', () => {
 
         test("successfully calls channel.send when called correctly", async () => {
             await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.CHANGELOG)
-            expect(discordClient.client.channels.cache.get).toHaveBeenCalledWith(DiscordClient.CHANNELS.CHANGELOG)
+            expect(discordClient.channels.cache.get).toHaveBeenCalledWith(DiscordClient.CHANNELS.CHANGELOG)
             expect(sendMock).toHaveBeenCalledWith(MESSAGES.GOML)
         })
 
         test("doesnt call channel.send when called with empty channel name", async () => {
             await discordClient.sendMessage(MESSAGES.GOML, "")
-            expect(discordClient.client.channels.cache.get).not.toHaveBeenCalled()
+            expect(discordClient.channels.cache.get).not.toHaveBeenCalled()
             expect(sendMock).not.toHaveBeenCalled()
         })
 
         test("doesnt call channel.send when it cannot find the channel from cache", async () => {
             await discordClient.sendMessage(MESSAGES.GOML, "NON_EXISTING_CHANNEL")
-            expect(discordClient.client.channels.cache.get).not.toHaveBeenCalled()
+            expect(discordClient.channels.cache.get).not.toHaveBeenCalled()
             expect(sendMock).not.toHaveBeenCalled()
         })
     })
