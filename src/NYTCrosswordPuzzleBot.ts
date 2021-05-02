@@ -7,7 +7,7 @@ dotenv.config();
 const discordClient = new DiscordClient();
 
 discordClient.on('ready', async () => {
-	await discordClient.sendMessage(DiscordClient.MESSAGES.UPDATE, DiscordClient.CHANNELS.CHANGELOG);
+	await discordClient.sendMessage(MESSAGES.UPDATE, DiscordClient.CHANNELS.CHANGELOG);
 	
 	//NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
 	Cron.startJob(CRON_INTERVALS.WEEKDAY, async () => {
