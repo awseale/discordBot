@@ -8,7 +8,7 @@ const discordClient = new DiscordClient();
 discordClient.login(process.env.TOKEN || "");
 
 discordClient.on("ready", async () => {
-  console.log("eggy kibun");
+  console.log("checking if the YAML file runs properly when we push this bad boy");
   await discordClient.sendMessage(MESSAGES.UPDATE, DiscordClient.CHANNELS.CHANGELOG);
 
   //NYT Crossword updates at 10PM EST on weekdays and 6PM EST on weekends
