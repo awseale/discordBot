@@ -1,16 +1,25 @@
-name: Tests CI
+name: Run Test Suite
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - main 
+    branches: [ main ]
 
 jobs:
-  execute-test-suite:
+  build:
+
     runs-on: ubuntu-latest
-    name: Run Test Suite
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
+
     steps:
-    - name: Run tests
+    - uses: actions/checkout@v2
+    - name: Execute test case suite
+      uses: actions/setup-node@v1
       with:
-        script: npm install && npm test
-  
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm test
