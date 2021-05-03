@@ -12,5 +12,5 @@ jobs:
     - name: Run tests
       uses: appleboy/ssh-action@master
       with:
-        script: cd ~/apps/nyt-crossword-discord-bot && npm test
+        script: cd ~/apps/nyt-crossword-discord-bot && npm install && npm test
   
