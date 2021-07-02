@@ -4,7 +4,7 @@
   "description": "A discord bot that links to the NYT mini crossword puzzle every day",
   "main": "NYTCrosswordPuzzleBot.ts",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit --detectOpenHandles",
     "start": "tsc --p tsconfig.json && node ./build/NYTCrosswordPuzzleBot",
     "lint": "eslint . --ext .js,.ts",
     "format": "prettier --write ."
