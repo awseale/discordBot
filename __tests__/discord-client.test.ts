@@ -16,6 +16,13 @@ describe("DiscordClient", () => {
   });
 
   describe("sendMessage()", () => {
+    beforeEach(() => {
+      discordClient.isValidChannel = jest.fn((channelName) => {
+        // mocking environment variables
+        return true;
+      });
+    });
+
     test("successfully calls channel.send when called correctly", async () => {
       await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.CHANGELOG);
       expect(discordClient.channels.cache.get).toHaveBeenCalledWith(DiscordClient.CHANNELS.CHANGELOG);
@@ -51,7 +58,7 @@ describe("DiscordClient", () => {
 
   describe("isValidChannel", () => {
     test("returns true if the channel is not empty", () => {
-      const input = "channel name";
+      const input = "123456789012345678";
       const output = true;
       expect(discordClient.isValidChannel(input)).toEqual(output);
     });
