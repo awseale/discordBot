@@ -17,10 +17,8 @@ describe("DiscordClient", () => {
 
   describe("sendMessage()", () => {
     beforeEach(() => {
-      discordClient.isValidChannel = jest.fn((channelName) => {
-        // mocking environment variables
-        return true;
-      });
+      process.env.CHANGELOG_CHANNEL = "123456789012345678";
+      process.env.CHANNEL = "876543210987654321";
     });
 
     test("successfully calls channel.send when called correctly", async () => {
