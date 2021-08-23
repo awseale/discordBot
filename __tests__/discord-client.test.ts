@@ -16,11 +16,6 @@ describe("DiscordClient", () => {
   });
 
   describe("sendMessage()", () => {
-    beforeEach(() => {
-      process.env.CHANGELOG_CHANNEL = "123456789012345678";
-      process.env.CHANNEL = "876543210987654321";
-    });
-
     test("successfully calls channel.send when called correctly", async () => {
       await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.CHANGELOG);
       expect(discordClient.channels.cache.get).toHaveBeenCalledWith(DiscordClient.CHANNELS.CHANGELOG);
