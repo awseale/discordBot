@@ -34,9 +34,8 @@ class DiscordClient extends Client {
   };
 
   isValidChannel = (channelName: string): boolean => {
-    // since they are environment variables, we can only really check that
-    // they are not empty
-    return channelName.length > 0;
+    // channel ids seem to always be 18 length
+    return channelName.length === 18;
   };
 }
 
