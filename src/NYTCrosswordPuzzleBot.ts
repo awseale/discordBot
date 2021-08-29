@@ -3,7 +3,7 @@ dotenv.config();
 import DiscordClient, { MESSAGES } from "./DiscordClient";
 import Cron, { CRON_INTERVALS } from "./Cron";
 import goml from "./commands/Goml";
-import { DMChannel, Message } from "discord.js";
+import { Message } from "discord.js";
 
 const discordClient = new DiscordClient();
 
