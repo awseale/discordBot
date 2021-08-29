@@ -23,10 +23,10 @@ discordClient.on("ready", async () => {
   });
 });
 
-discordClient.on("message", async (message: Message) => {
-  const parsedMessage = discordClient.parseMessage(message.content);
+discordClient.on("message", async ({content, channel}: Message) => {
+  const parsedMessage = discordClient.parseMessage(content);
 
   if (parsedMessage === "goml" || parsedMessage === "#goml") {
-    await goml(discordClient, message.channel);
+    await goml(discordClient, channel);
   }
 });
