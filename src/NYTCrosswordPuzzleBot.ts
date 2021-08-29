@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import DiscordClient, { MESSAGES } from "./DiscordClient";
 import Cron, { CRON_INTERVALS } from "./Cron";
+import goml from "./commands/Goml";
 import { DMChannel, Message } from "discord.js";
 
 const discordClient = new DiscordClient();
@@ -22,11 +23,10 @@ discordClient.on("ready", async () => {
   });
 });
 
-discordClient.on("message", async ({ content, channel }: Message) => {
-  const parsedMessage = discordClient.parseMessage(content);
+discordClient.on("message", async (message: Message) => {
+  const parsedMessage = discordClient.parseMessage(message.content);
 
-  const isNytMiniChannel = (!(channel instanceof DMChannel) && channel.name === DiscordClient.CHANNELS.MAIN);
-  if (isNytMiniChannel && (parsedMessage === "goml" || parsedMessage === "#goml")) {
-    await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.MAIN);
+  if (parsedMessage === "goml" || parsedMessage === "#goml") {
+    await goml(discordClient, message.channel);
   }
 });
