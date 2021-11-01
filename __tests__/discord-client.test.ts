@@ -51,7 +51,7 @@ describe("DiscordClient", () => {
 
   describe("isValidChannel", () => {
     test("returns true if the channel is not empty", () => {
-      const input = "channel name";
+      const input = "123456789012345678";
       const output = true;
       expect(discordClient.isValidChannel(input)).toEqual(output);
     });
