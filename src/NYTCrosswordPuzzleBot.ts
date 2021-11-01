@@ -2,6 +2,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import DiscordClient, { MESSAGES } from "./DiscordClient";
 import Cron, { CRON_INTERVALS } from "./Cron";
+import goml from "./commands/Goml";
+import { Message } from "discord.js";
 
 const discordClient = new DiscordClient();
 
@@ -21,10 +23,10 @@ discordClient.on("ready", async () => {
   });
 });
 
-discordClient.on("message", async ({ content }) => {
+discordClient.on("message", async ({content, channel}: Message) => {
   const parsedMessage = discordClient.parseMessage(content);
 
   if (parsedMessage === "goml" || parsedMessage === "#goml") {
-    await discordClient.sendMessage(MESSAGES.GOML, DiscordClient.CHANNELS.MAIN);
+    await goml(discordClient, channel);
   }
 });
