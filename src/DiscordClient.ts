@@ -1,4 +1,5 @@
 import { Client, TextChannel } from "discord.js";
+import dogstats from "./util/dogstats";
 
 export enum MESSAGES {
   UPDATE = "Ya boy is back and better than ever\nFor change notes, ask <@677740656747216916>",
@@ -24,7 +25,14 @@ class DiscordClient extends Client {
     if (hasValidChannels) {
       if (channelNameMatches) {
         const channel = await this.channels.fetch(channelName);
-        (channel as TextChannel)?.send(message);
+        (channel as TextChannel)
+          ?.send(message)
+          .then(() => {
+            dogstats.increment("discordbot.discord.message.sent");
+          })
+          .catch(() => {
+            dogstats.increment("discordbot.discord.message.failed");
+          });
       }
     }
   };
